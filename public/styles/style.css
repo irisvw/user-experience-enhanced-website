@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #471871;
+    background: linear-gradient(in hsl to bottom, #471871, #142151);
+    background: var(--background-method);
+
+    font-family: var(--font-primary);
+    color: white;
+}
+
+main {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h1 {
+    width: max-content;
+    margin: 1em auto;
+}
+
+h2 {
+    margin: 1em 0;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+/* Lists */
+.list-horizontal,
+.list-vertical,
+.list-grid {
+    list-style: none;
+    gap: 1em;
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    li {
+        background-color: white;
+        color: black;
+        border-radius: var(--border-radius);
+        padding: 1em;
+    }
+
+    li img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+    }
+}
+
+.list-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: scroll;
+
+    li {
+        height: 18rem;
+        width: 11rem;
+    }
+
+    li img {
+        height: 9rem;
+        max-height: 9rem;
+    }
+}
+
+.list-vertical {
+    li {
+
+    }
+}
+
+.list-grid {
+    display: grid;
+    grid-template-rows: repeat(3, max-content);
+    grid-auto-columns: max-content;
+    grid-auto-flow: column;
+    overflow-y: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1rem;
+
+    li {
+        width: 22rem;
+        max-width: 90vw;
+        height: 6rem;
+        padding: .5rem;
+
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: .5rem;
+
+        scroll-snap-align: start;
+    }
+
+    li img {
+        grid-row: 1 / -1;
+        grid-column: 1 / 2;
+        height: 5rem;
+        width: 5rem;
+        object-fit: cover;
+    }
+}
+
+.list-horizontal .add-playlist {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    img {
+        rotate: 45deg;
+        filter: invert(1);
+    }
+}
