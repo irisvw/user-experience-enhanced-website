@@ -1,3 +1,17 @@
+/* FONTS */
+@font-face {
+    font-family: "Poppins";
+    font-weight: normal;
+    src: url("assets/Poppins-medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-weight: bold;
+    src: url("assets/Poppins-bold.ttf") format("truetype");
+}
+
+/* COLORS */
 :root {
     /* Kleuren per scherm */
     --background-method: linear-gradient(in hsl to bottom, #471871, #142151);

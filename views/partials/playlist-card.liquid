@@ -1,0 +1,48 @@
+<li class="card-vertical">
+  <img
+    src="https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}"
+    alt="{{ playlist.image.title }}"
+    height="144">
+  <h3>{{ playlist.title }}</h3>
+  <p class="playtime">1234</p>
+
+  {% if action == "like" %}
+    <form
+      method="post"
+      action="/124/{{ playlist.id }}/like"
+      data-enhanced="form-{{ playlist.id }}">
+      <button type="submit">
+        <svg
+          width="24"
+          height="24"
+          viewBox="-3 -5 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.65358 2.15238C8.8471 2.33832 9.1529 2.33832 9.34642 2.15238C10.1829 1.34871 11.326 0.75 12.6 0.75C15.1489 0.75 17.25 2.64769 17.25 5.0298C17.25 6.72608 16.4577 8.18092 15.348 9.42804C14.2397 10.6736 12.7972 11.7316 11.4588 12.6376L9.14014 14.207C9.0555 14.2643 8.9445 14.2643 8.85986 14.207L6.54125 12.6376C5.20278 11.7316 3.76035 10.6736 2.65201 9.42804C1.54225 8.18092 0.75 6.72608 0.75 5.0298C0.75 2.64769 2.85106 0.75 5.4 0.75C6.67403 0.75 7.81714 1.34871 8.65358 2.15238Z"
+            stroke="#C4C4C4"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+
+      </button>
+    </form>
+
+  {% elsif action == "unlike" %}
+    <form
+      method="post"
+      action="/124/{{ playlist.id }}/unlike"
+      data-enhanced="form-{{ playlist.id }}">
+      <button type="submit">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.4 5.25C5.61914 5.25 3.25 7.3293 3.25 10.0298C3.25 11.8927 4.12235 13.4612 5.27849 14.7604C6.43066 16.0552 7.91714 17.142 9.26097 18.0516L11.5796 19.6211C11.8335 19.793 12.1665 19.793 12.4204 19.6211L14.739 18.0516C16.0829 17.142 17.5693 16.0552 18.7215 14.7604C19.8777 13.4612 20.75 11.8927 20.75 10.0298C20.75 7.3293 18.3809 5.25 15.6 5.25C14.1665 5.25 12.9052 5.92214 12 6.79183C11.0948 5.92214 9.83347 5.25 8.4 5.25Z" fill="#F33232" />
+        </svg>
+      </button>
+    </form>
+  {% endif %}
+</li>

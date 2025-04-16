@@ -20,7 +20,7 @@ let stories = await fetch(`${baseURL}story?fields=*.*`);
 let seasons = await fetch(`${baseURL}season`);
 let languages = await fetch(`${baseURL}language`);
 let animals = await fetch(`${baseURL}animal`);
-let playlists = await fetch(`${baseURL}playlist?fields=creator,id,title,image`);
+let playlists = await fetch(`${baseURL}playlist?fields=creator,id,title,image.*`);
 
 let storiesJSON = await stories.json();
 let seasonsJSON = await seasons.json();
@@ -32,6 +32,7 @@ let playlistsJSON = await playlists.json();
 app.get("/", async function (req, res) {
     let likes = await fetch(`${baseURL}likes?fields=playlist&filter[_and][0][profile][id][_eq]=${defaultProfile}&filter[_and][1][playlist][_nnull]`);
     let likesJSON = await likes.json();
+
     // convert array of objects to array of values
     let likesArray = likesJSON.data.map(a => a.playlist);
     
