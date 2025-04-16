@@ -1,40 +1,61 @@
-{% render "partials/head.liquid" %}
+{% render "partials/head.liquid"
+  , title: "Lessons" %}
 
-<h1>Lessons</h1>
+<main>
+  <h1>Lessons</h1>
 
-<h2>Recommended Stories</h2>
+  <h2>Recommended Stories</h2>
 
-<h2>Your playlists</h2>
-<ul>
-  {% for playlist in yourPlaylists %}
-    {% render "partials/playlist-card.liquid"
-      , playlist: playlist %}
-  {% endfor %}
-</ul>
+  <h2>Your playlists</h2>
+  <ul class="list-horizontal">
+    {% for playlist in yourPlaylists %}
+      {% render "partials/playlist-card.liquid"
+        , playlist: playlist %}
+    {% else %}
+      <li class="add-playlist">
+        <a href="">
+          <img
+            class="plus"
+            src="assets/times.svg"
+            alt=""
+            height="144">
+        </a>
+        <h3>Make a playlist!</h3>
+        <p>Add your favorite stories in one playlist.</p>
+      </li>
+    {% endfor %}
+  </ul>
 
-<h2>All stories</h2>
-<ul>
-  {% for story in stories %}
-    {% render "partials/story-card.liquid"
-      , story: story %}
-  {% endfor %}
-</ul>
+  <h2>All stories</h2>
+  <ul class="list-grid">
+    {% for story in stories %}
+      {% render "partials/story-card.liquid"
+        , story: story %}
+    {% endfor %}
+  </ul>
 
-<h2>Liked playlists</h2>
-<ul>
-  {% for playlist in likedPlaylists %}
-    {% render "partials/playlist-card.liquid"
-      , playlist: playlist %}
-  {% endfor %}
-</ul>
+  <h2>Liked playlists</h2>
+  <ul class="list-horizontal">
+    {% for playlist in likedPlaylists %}
+      {% render "partials/playlist-card.liquid"
+        , playlist: playlist
+        , action: "unlike" %}
+    {% else %}
+      <p>Tap the ❤️ at any playlists you love!</p>
+    {% endfor %}
+  </ul>
 
-<h2>Suggested playlists</h2>
-<ul>
-  {% for playlist in suggestedPlaylists %}
-    {% render "partials/playlist-card.liquid"
-      , playlist: playlist %}
-  {% endfor %}
-</ul>
+  <h2>Suggested playlists</h2>
+  <ul class="list-horizontal">
+    {% for playlist in suggestedPlaylists %}
+      {% render "partials/playlist-card.liquid"
+        , playlist: playlist
+        , action: "like" %}
+    {% else %}
+      <p>There are currently no suggested playlists. Check back some other time!</p>
+    {% endfor %}
+  </ul>
+</main>
 
 {% render "partials/foot.liquid" %}
 
