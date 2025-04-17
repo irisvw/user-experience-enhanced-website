@@ -16,15 +16,17 @@ body {
 main {
     max-width: 500px;
     margin: 1rem auto;
+    padding-left: 1rem;
 }
 
+/* Headings */
 h1 {
     width: max-content;
-    margin: 1em auto;
+    margin: 1rem auto;
 }
 
 h2 {
-    margin: 1em 0;
+    margin: 1rem 0;
 }
 
 h3 {
@@ -66,20 +68,24 @@ h3 {
     li {
         height: 18rem;
         width: 11rem;
+        padding: 1rem;
     }
 
     li img {
         height: 9rem;
         max-height: 9rem;
+        width: 9rem;
     }
 }
 
+/* Vertically scrolling list with horizontally-oriented cards */
 .list-vertical {
     li {
 
     }
 }
 
+/* A grid-style list with horizontally-oriented cards */
 .list-grid {
     display: grid;
     grid-template-rows: repeat(3, max-content);
@@ -88,8 +94,10 @@ h3 {
     overflow-y: scroll;
     scroll-snap-type: x mandatory;
     scroll-padding-left: 1rem;
+    gap: .5rem;
 
     li {
+        min-width: 16rem;
         width: 22rem;
         max-width: 90vw;
         height: 6rem;
@@ -112,6 +120,7 @@ h3 {
     }
 }
 
+/* "Add your own playlist" card */
 .list-horizontal .add-playlist {
     color: white;
     background-color: rgba(255, 255, 255, 0.2);
@@ -120,4 +129,10 @@ h3 {
         rotate: 45deg;
         filter: invert(1);
     }
+
+    h3 {
+        height: 1lh;
+    }
+}
+}
 }
