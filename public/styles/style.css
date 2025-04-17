@@ -49,7 +49,6 @@ h3 {
         background-color: white;
         color: black;
         border-radius: var(--border-radius);
-        padding: 1em;
     }
 
     li img {
@@ -57,8 +56,18 @@ h3 {
         object-fit: cover;
         border-radius: var(--border-radius);
     }
+
+    li h3 {
+        height: 2lh;
+        text-wrap: balance;
+        align-content: space-evenly;
+        overflow: hidden;
+        white-space: wrap;
+        text-overflow: ellipsis;
+    }
 }
 
+/* Horizontally scrolling lists with vertically-oriented cards */
 .list-horizontal {
     display: flex;
     flex-direction: row;
@@ -134,5 +143,13 @@ h3 {
         height: 1lh;
     }
 }
-}
+
+.nav-stories {
+    display: inline-flex;
+    list-style: none;
+    gap: .5em;
+
+    a {
+        color: white;
+    }
 }

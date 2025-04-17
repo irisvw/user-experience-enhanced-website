@@ -1,58 +1,84 @@
 {% render "partials/head.liquid"
-  , title: "Lessons" %}
+, title: "Lessons" %}
 
 <main>
   <h1>Lessons</h1>
 
   <h2>Recommended Stories</h2>
+  <ul class="list-grid">
+    {% for story in stories %}
+    {% render "partials/story-card.liquid"
+    , story: story %}
+    {% endfor %}
+  </ul>
 
   <h2>Your playlists</h2>
   <ul class="list-horizontal">
     {% for playlist in yourPlaylists %}
-      {% render "partials/playlist-card.liquid"
-        , playlist: playlist %}
-    {% else %}
-      <li class="add-playlist">
-        <a href="">
-          <img
-            class="plus"
-            src="assets/times.svg"
-            alt=""
-            height="144">
-        </a>
-        <h3>Make a playlist!</h3>
-        <p>Add your favorite stories in one playlist.</p>
-      </li>
+    {% render "partials/playlist-card.liquid"
+    , playlist: playlist %}
     {% endfor %}
+
+    <li class="add-playlist">
+      <a href="">
+        <img class="plus" src="assets/times.svg" alt="" height="144">
+      </a>
+      <h3>Make a playlist!</h3>
+      <p>Add your favorite stories in one playlist.</p>
+    </li>
   </ul>
 
   <h2>All stories</h2>
   <ul class="list-grid">
     {% for story in stories %}
-      {% render "partials/story-card.liquid"
-        , story: story %}
+    {% assign remainder = forloop.index | modulo: 3 %}
+
+    {% if forloop.first %}
+    {% render "partials/story-card.liquid"
+    , story: story
+    , page: "1" %}
+
+    {% elsif remainder == 1 %}
+    {% assign page = forloop.index | to_integer |  plus: 2 |  divided_by: 3 %}
+    {% render "partials/story-card.liquid"
+    , story: story
+    , page: page %}
+
+    {% else %}
+    {% render "partials/story-card.liquid"
+    , story: story %}
+
+    {% endif %}
     {% endfor %}
+  </ul>
+
+  <ul class="nav-stories">
+    <li><a href="#page1">1</a></li>
+    <li><a href="#page2">2</a></li>
+    <li><a href="#page3">3</a></li>
+    <li><a href="#page4">4</a></li>
+    <li><a href="#page5">5</a></li>
   </ul>
 
   <h2>Liked playlists</h2>
   <ul class="list-horizontal">
     {% for playlist in likedPlaylists %}
-      {% render "partials/playlist-card.liquid"
-        , playlist: playlist
-        , action: "unlike" %}
+    {% render "partials/playlist-card.liquid"
+    , playlist: playlist
+    , action: "unlike" %}
     {% else %}
-      <p>Tap the ❤️ at any playlists you love!</p>
+    <p>Tap the ❤️ at any playlists you love!</p>
     {% endfor %}
   </ul>
 
   <h2>Suggested playlists</h2>
   <ul class="list-horizontal">
     {% for playlist in suggestedPlaylists %}
-      {% render "partials/playlist-card.liquid"
-        , playlist: playlist
-        , action: "like" %}
+    {% render "partials/playlist-card.liquid"
+    , playlist: playlist
+    , action: "like" %}
     {% else %}
-      <p>There are currently no suggested playlists. Check back some other time!</p>
+    <p>There are currently no suggested playlists. Check back some other time!</p>
     {% endfor %}
   </ul>
 </main>
@@ -62,30 +88,30 @@
 <script type="module">
   const baseURL = "https://fdnd-agency.directus.app/items/tm_";
   const defaultProfile = 124;
-  
+
   if ('fetch' in window && 'DOMParser' in window) {
     document.addEventListener('submit', async function (event) {
       const form = event.target;
-  
+
       if (!form.hasAttribute('data-enhanced')) {
         return;
       }
-  
+
       event.preventDefault();
       form.classList.add('loading');
-  
+
       const response = await fetch(form.action, {
         method: form.method,
         body: new URLSearchParams(new FormData(form))
       });
-  
+
       const responseText = await response.text();
-  
+
       const parser = new DOMParser();
       const responseDOM = parser.parseFromString(responseText, 'text/html');
-  
+
       const newState = responseDOM.querySelector('[data-enhanced="' + form.getAttribute('data-enhanced') + '"]');
-  
+
       // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
       form.outerHTML = newState.outerHTML;
     });
