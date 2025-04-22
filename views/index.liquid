@@ -1,5 +1,5 @@
-{% render "partials/head.liquid"
-  , title: "Lessons" %}
+{% render 'partials/head.liquid'
+  , title: 'Lessons' %}
 
 <main>
   <h1>Lessons</h1>
@@ -10,17 +10,19 @@
   </ol>
 
   <h2>Recommended Stories</h2>
-  <ul class="list-grid">
-    {% for story in stories %}
-      {% render "partials/story-card.liquid"
-        , story: story %}
-    {% endfor %}
-  </ul>
+  <div class="scroll-container">
+    <ul class="list-grid">
+      {% for story in stories %}
+        {% render 'partials/story-card.liquid'
+          , story: story %}
+      {% endfor %}
+    </ul>
+  </div>
 
   <h2>Your playlists</h2>
   <ul class="list-horizontal">
     {% for playlist in yourPlaylists %}
-      {% render "partials/playlist-card.liquid"
+      {% render 'partials/playlist-card.liquid'
         , playlist: playlist %}
     {% endfor %}
 
@@ -50,53 +52,23 @@
     </li>
   </ul>
 
-  <ul class="list-grid">
-    {% for story in stories %}
-      {% assign remainder = forloop.index | modulo: 3 %}
-
-      {% if forloop.first %}
-        {% render "partials/story-card.liquid"
-          , story: story
-          , page: "1" %}
-
-      {% elsif remainder == 1 %}
-        {% assign page = forloop.index | to_integer | plus: 2 | divided_by: 3 %}
-        {% render "partials/story-card.liquid"
-          , story: story
-          , page: page %}
-
-      {% else %}
-        {% render "partials/story-card.liquid"
+  <div class="scroll-container">
+    <ul class="list-grid">
+      {% for story in stories %}
+        {% render 'partials/story-card.liquid'
           , story: story %}
-
-      {% endif %}
-    {% endfor %}
-  </ul>
-
-  <ul class="nav-stories">
-    <li>
-      <a href="#page1">1</a>
-    </li>
-    <li>
-      <a href="#page2">2</a>
-    </li>
-    <li>
-      <a href="#page3">3</a>
-    </li>
-    <li>
-      <a href="#page4">4</a>
-    </li>
-    <li>
-      <a href="#page5">5</a>
-    </li>
-  </ul>
+      {% else %}
+        <p>There are no stories to display right now.</p>
+      {% endfor %}
+    </ul>
+  </div>
 
   <h2>Liked playlists</h2>
   <ul class="list-horizontal">
     {% for playlist in likedPlaylists %}
-      {% render "partials/playlist-card.liquid"
+      {% render 'partials/playlist-card.liquid'
         , playlist: playlist
-        , action: "unlike" %}
+        , action: 'unlike' %}
     {% else %}
       <p>Tap the ❤️ at any playlists you love!</p>
     {% endfor %}
@@ -105,19 +77,19 @@
   <h2>Suggested playlists</h2>
   <ul class="list-horizontal">
     {% for playlist in suggestedPlaylists %}
-      {% render "partials/playlist-card.liquid"
+      {% render 'partials/playlist-card.liquid'
         , playlist: playlist
-        , action: "like" %}
+        , action: 'like' %}
     {% else %}
       <p>There are currently no suggested playlists. Check back some other time!</p>
     {% endfor %}
   </ul>
 </main>
 
-{% render "partials/foot.liquid" %}
+{% render 'partials/foot.liquid' %}
 
 <script type="module">
-  const baseURL = "https://fdnd-agency.directus.app/items/tm_";
+  const baseURL = 'https://fdnd-agency.directus.app/items/tm_';
   const defaultProfile = 124;
   
   if ('fetch' in window && 'DOMParser' in window) {
@@ -133,7 +105,7 @@
   
       const response = await fetch(form.action, {
         method: form.method,
-        body: new URLSearchParams(new FormData(form))
+        body: new URLSearchParams(new FormData(form)),
       });
   
       const responseText = await response.text();

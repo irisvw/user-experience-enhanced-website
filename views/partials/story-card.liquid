@@ -1,9 +1,4 @@
-{% if page %}
-  <li id="page{{ page }}">
-{% else %}
-  <li>
-{% endif %}
-
+<li>
   <h3>{{ story.title }}</h3>
   <img src="https://fdnd-agency.directus.app/assets/{{ story.image.id | default: " 2d0c060b-e899-4a81-8e7e-dbd42c666616"
     }}" alt="{{ story.image.title }}" height="80" width="80">
