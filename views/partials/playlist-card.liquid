@@ -1,8 +1,14 @@
 <li>
-  <img
-    src="https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}"
-    alt="{{ playlist.image.title }}"
-    height="144">
+  <picture>
+    <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}?format=avif&height=200&width=200,
+    https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}?format=avif&height=400&width=400 2x">
+    <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}?format=webp&height=200&width=200,
+    https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}?format=webp&height=400&width=400 2x">
+    <img
+      src="https://fdnd-agency.directus.app/assets/{{ playlist.image.id | default: "2d0c060b-e899-4a81-8e7e-dbd42c666616" }}"
+      alt="{{ playlist.image.title }}"
+      height="144">
+  </picture>
   <h3>{{ playlist.title }}</h3>
   <p class="playtime">1234</p>
 

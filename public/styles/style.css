@@ -108,7 +108,7 @@ ol.progress {
         grid-column: 1 / 2;
         appearance: none;
         border: none;
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         background-color: white;
         color: black;
         padding: .8em;
@@ -169,7 +169,8 @@ ol.progress {
         border-radius: var(--border-radius);
     }
 
-    li img {
+    li img,
+    li picture {
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: var(--border-radius);
@@ -220,7 +221,8 @@ ol.progress {
         padding: 1rem;
     }
 
-    li img {
+    li img,
+    li picture {
         height: 9rem;
         max-height: 9rem;
         width: 9rem;
@@ -295,7 +297,7 @@ ol.progress {
         scroll-snap-align: start;
     }
 
-    li img {
+    li picture {
         grid-row: 1 / -1;
         grid-column: 1 / 2;
         height: 5rem;
@@ -412,9 +414,7 @@ ol.progress {
     }
 }
 
-@keyframes heart {}
-
 /* Loading state */
 .loading {
-    animation: heart infinite;
+    opacity: 0.5;
 }
