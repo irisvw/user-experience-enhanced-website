@@ -88,6 +88,9 @@ ol.progress {
     button {
         color: black;
         background-color: white;
+        font-size: var(--font-size-m);
+        font-weight: var(--font-weight-bold);
+        font-family: var(--font-primary);
     }
 }
 
@@ -227,6 +230,10 @@ ol.progress {
         max-height: 9rem;
         width: 9rem;
     }
+
+    li p {
+        display: inline;
+    }
 }
 
 /* Vertically scrolling list with horizontally-oriented cards */
@@ -259,7 +266,7 @@ ol.progress {
             width: 5rem;
         }
 
-        p.playtime {
+        p {
             display: inline-block;
         }
     }
@@ -316,6 +323,7 @@ ol.progress {
 
 @supports (scroll-marker-group: after) {
     .list-grid {
+
         &::scroll-button(left),
         &::scroll-button(right) {
             padding: 0.5em 1em;
@@ -328,17 +336,17 @@ ol.progress {
             font-size: var(--font-size-l);
             margin: .5rem 0;
         }
-    
+
         &::scroll-button(left) {
             content: "<" / "Scroll Left";
             grid-area: left;
         }
-    
+
         &::scroll-button(right) {
             content: ">" / "Scroll Right";
             grid-area: right;
         }
-    
+
         &::scroll-button(*)::focus-visible {
             outline-offset: 5px;
         }
