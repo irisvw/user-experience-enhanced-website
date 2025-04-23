@@ -304,92 +304,95 @@ ol.progress {
     }
 }
 
-.list-grid {
-    &::scroll-button(left),
-    &::scroll-button(right) {
-        padding: 0.5em 1em;
-        appearance: none;
-        border: none;
-        background-color: #9264F4;
-        color: white;
-        border-radius: var(--border-radius);
-        font-weight: var(--font-weight-bold);
-        font-size: var(--font-size-l);
-        margin: .5rem 0;
-    }
-
-    &::scroll-button(left) {
-        content: "<" / "Scroll Left";
-        grid-area: left;
-    }
-
-    &::scroll-button(right) {
-        content: ">" / "Scroll Right";
-        grid-area: right;
-    }
-
-    &::scroll-button(*)::focus-visible {
-        outline-offset: 5px;
-    }
-}
-
 .scroll-container {
     display: grid;
-    grid-template-areas: 
-      "scroll scroll scroll"
-      "left markers right";
+    grid-template-areas:
+        "scroll scroll scroll"
+        "left markers right";
     grid-template-columns: auto 1fr auto;
 }
 
-.list-grid {
-    scroll-marker-group: after;
-
-    &::scroll-marker-group {
-        grid-area: markers;
-        /* place markers in parent grid area */
-
-        /* 15px by 15px horizontal grid - size of dots */
-        display: grid;
-        place-content: safe center;
-        grid: 30px / auto-flow 30px;
-        gap: 15px;
-        padding: 15px;
-        scroll-padding: 15px;
-
-        /* handle overflow */
-        overflow: auto;
-        overscroll-behavior-x: contain;
-        scrollbar-width: none;
-        scroll-snap-type: x mandatory;
-
-        @media (prefers-reduced-motion: no-preference) {
-            scroll-behavior: smooth;
+@supports (scroll-marker-group: after) {
+    .list-grid {
+        &::scroll-button(left),
+        &::scroll-button(right) {
+            padding: 0.5em 1em;
+            appearance: none;
+            border: none;
+            background-color: #9264F4;
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-l);
+            margin: .5rem 0;
+        }
+    
+        &::scroll-button(left) {
+            content: "<" / "Scroll Left";
+            grid-area: left;
+        }
+    
+        &::scroll-button(right) {
+            content: ">" / "Scroll Right";
+            grid-area: right;
+        }
+    
+        &::scroll-button(*)::focus-visible {
+            outline-offset: 5px;
         }
     }
 
-    /* a marker for each <li> */
-    li:nth-child(3n + 1) {
-        /* create by adding content */
-        &::scroll-marker {
-            content: " ";
+    .list-grid {
+        scroll-marker-group: after;
 
-            /* style it as you need */
-            border: 1px solid white;
-            border-radius: 50%;
-            outline-offset: 4px;
-            -webkit-tap-highlight-color: transparent;
+        &::scroll-marker-group {
+            grid-area: markers;
+            /* place markers in parent grid area */
 
-            /* snap if group is overflowing */
-            scroll-snap-align: center;
+            /* 15px by 15px horizontal grid - size of dots */
+            display: grid;
+            place-content: safe center;
+            grid: 30px / auto-flow 30px;
+            gap: 15px;
+            padding: 15px;
+            scroll-padding: 15px;
+
+            /* handle overflow */
+            overflow: auto;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+
+            @media (prefers-reduced-motion: no-preference) {
+                scroll-behavior: smooth;
+            }
         }
 
-        &::scroll-marker:is(:hover, :focus-visible) {
-            border-color: #9264F4;
-        }
+        /* a marker for each <li> */
+        li:nth-child(3n + 1) {
 
-        &::scroll-marker:target-current {
-            background: #9264F4;
-            border-color: #9264F4;
+            /* create by adding content */
+            &::scroll-marker {
+                content: " ";
+
+                /* style it as you need */
+                border: 1px solid white;
+                border-radius: 50%;
+                outline-offset: 4px;
+                -webkit-tap-highlight-color: transparent;
+
+                /* snap if group is overflowing */
+                scroll-snap-align: center;
+            }
+
+            &::scroll-marker:is(:hover, :focus-visible) {
+                border-color: #9264F4;
+            }
+
+            &::scroll-marker:target-current {
+                background: #9264F4;
+                border-color: #9264F4;
+            }
         }
     }
 }
