@@ -347,9 +347,6 @@ ol.progress {
 
         &::scroll-marker-group {
             grid-area: markers;
-            /* place markers in parent grid area */
-
-            /* 15px by 15px horizontal grid - size of dots */
             display: grid;
             place-content: safe center;
             grid: 30px / auto-flow 30px;
@@ -357,7 +354,6 @@ ol.progress {
             padding: 15px;
             scroll-padding: 15px;
 
-            /* handle overflow */
             overflow: auto;
             overscroll-behavior-x: contain;
             scrollbar-width: none;
@@ -368,20 +364,13 @@ ol.progress {
             }
         }
 
-        /* a marker for each <li> */
         li:nth-child(3n + 1) {
-
-            /* create by adding content */
             &::scroll-marker {
                 content: " ";
-
-                /* style it as you need */
                 border: 1px solid white;
                 border-radius: 50%;
                 outline-offset: 4px;
                 -webkit-tap-highlight-color: transparent;
-
-                /* snap if group is overflowing */
                 scroll-snap-align: center;
             }
 
