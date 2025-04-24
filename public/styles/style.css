@@ -282,7 +282,6 @@ ol.progress {
 
     overflow-y: scroll;
     scroll-snap-type: x mandatory;
-    scroll-padding-left: 1rem;
     gap: .5rem;
 
     @media (prefers-reduced-motion: no-preference) {
@@ -301,7 +300,7 @@ ol.progress {
         grid-template-rows: 1fr 1fr;
         column-gap: .5rem;
 
-        scroll-snap-align: start;
+        scroll-snap-align: center;
     }
 
     li picture {
