@@ -187,6 +187,35 @@ ol.progress {
         white-space: wrap;
         text-overflow: ellipsis;
     }
+}
+
+/* Horizontally scrolling lists with vertically-oriented cards */
+.list-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: scroll;
+
+    li {
+        display: grid;
+        height: 18rem;
+        width: 11rem;
+        padding: 1rem;
+    }
+
+    li img,
+    li picture {
+        height: 9rem;
+        max-height: 9rem;
+        width: 9rem;
+    }
+
+    li p {
+        display: inline;
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+        align-self: center;
+    }
 
     li form {
         width: fit-content;
@@ -208,31 +237,6 @@ ol.progress {
             width: 100%;
             aspect-ratio: 1 / 1;
         }
-    }
-}
-
-/* Horizontally scrolling lists with vertically-oriented cards */
-.list-horizontal {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow: scroll;
-
-    li {
-        height: 18rem;
-        width: 11rem;
-        padding: 1rem;
-    }
-
-    li img,
-    li picture {
-        height: 9rem;
-        max-height: 9rem;
-        width: 9rem;
-    }
-
-    li p {
-        display: inline;
     }
 }
 
