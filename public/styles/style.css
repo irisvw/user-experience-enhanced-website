@@ -424,4 +424,25 @@ ol.progress {
 /* Loading state */
 .loading {
     opacity: 0.5;
+
+    button svg {
+        animation: heart .5s infinite;
+    }
+}
+
+@keyframes heart {
+    0% {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    50% {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    100% {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 }
