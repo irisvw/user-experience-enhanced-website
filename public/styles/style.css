@@ -470,3 +470,99 @@ ol.progress {
         width: 2.5rem;
     }
 }
+
+/* The main header for the stories overview page */
+.header-stories {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: baseline;
+    max-width: 90dvw;
+    margin: 0 auto;
+
+    h1,
+    a {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        margin: 1em 0 .5em 0;
+    }
+
+    h1 {
+        justify-self: center;
+    }
+
+    a {
+        color: white;
+        justify-self: start;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 1px;
+    }
+}
+
+/* Stories overview: filters */
+.filters {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 1rem auto;
+}
+
+.details-top-level {
+    color: white;
+    background-color: #8654F3;
+    border-radius: 5px;
+    margin: .5em auto;
+    max-width: 90dvw;
+}
+
+.summary-top-level {
+    color: white;
+    padding: .5em;
+    font-weight: bold;
+    letter-spacing: 0.025em;
+}
+
+.menu-filter {
+    background-color: #8654F3;
+    padding: .5em 1em;
+    border-radius: 5px;
+
+    button {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        color: white;
+        font-size: 1rem;
+        font-family: 'poppins';
+        width: 100%;
+        text-align: left;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    summary {
+        font-weight: bold;
+    }
+}
+
+.options {
+    margin: .5em 0;
+  }
+  
+  .options li {
+    list-style: none;
+    margin-left: 1em;
+    line-height: 2em;
+  
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
