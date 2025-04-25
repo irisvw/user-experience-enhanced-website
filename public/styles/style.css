@@ -186,20 +186,20 @@ ol.progress {
         display: none;
     }
 
-    li {
+    >li {
         background-color: white;
         color: black;
         border-radius: var(--border-radius);
     }
 
-    li img,
-    li picture {
+    >li img,
+    >li picture {
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: var(--border-radius);
     }
 
-    li h3 {
+    >li h3 {
         height: 2lh;
         text-wrap: balance;
         align-content: space-evenly;
@@ -216,28 +216,28 @@ ol.progress {
     flex-wrap: nowrap;
     overflow: scroll;
 
-    li {
+    >li {
         display: grid;
         height: 18rem;
         width: 11rem;
         padding: 1rem;
     }
 
-    li img,
-    li picture {
+    >li img,
+    >li picture {
         height: 9rem;
         max-height: 9rem;
         width: 9rem;
     }
 
-    li p {
+    >li p {
         display: inline;
         grid-row: 3 / 4;
         grid-column: 1 / 2;
         align-self: center;
     }
 
-    li form {
+    >li form {
         width: fit-content;
         grid-row: 3 / 4;
         grid-column: 1 / 2;
@@ -246,7 +246,7 @@ ol.progress {
         align-items: center;
     }
 
-    li form button {
+    >li form button {
         background-color: transparent;
         padding: 0;
         height: 2.5rem;
@@ -265,7 +265,8 @@ ol.progress {
     margin-top: 1.5em;
     align-items: center;
 
-    li {
+
+    >li {
         width: 100%;
         max-width: 90vw;
         height: 6rem;
@@ -307,11 +308,12 @@ ol.progress {
     scroll-snap-type: x mandatory;
     gap: .5rem;
 
+
     @media (prefers-reduced-motion: no-preference) {
         scroll-behavior: smooth;
     }
 
-    li {
+    >li {
         min-width: 16rem;
         width: 22rem;
         max-width: 90vw;
@@ -321,17 +323,36 @@ ol.progress {
         display: grid;
         grid-template-columns: 5rem 1fr;
         grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "image title"
+            "image description";
         column-gap: .5rem;
 
         scroll-snap-align: center;
+
+        /* Container query */
+        container-type: inline-size;
+        container-name: horizontal-card;
     }
 
-    li picture {
-        grid-row: 1 / -1;
-        grid-column: 1 / 2;
+    >li picture {
+        grid-area: image;
         height: 5rem;
         width: 5rem;
         object-fit: cover;
+    }
+
+    >li h3 {
+        grid-area: title;
+    }
+
+    li .description {
+        grid-area: description;
+        list-style: none;
+        width: fit-content;
+        height: fit-content;
+        display: inline-flex;
+        gap: .5rem;
     }
 }
 
@@ -396,7 +417,7 @@ ol.progress {
             }
         }
 
-        li:nth-child(3n + 1) {
+        >li:nth-child(3n + 1) {
             &::scroll-marker {
                 content: " ";
                 border: 1px solid white;
@@ -550,19 +571,76 @@ ol.progress {
 /* Filter options inside of filter menu */
 .options {
     margin: .5em 0;
-  }
-  
-  .options li {
+}
+
+.options li {
     list-style: none;
     margin-left: 1em;
     line-height: 2em;
-  
-    a {
-      color: white;
-      text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
-      }
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* Flags */
+.dutch,
+.italian,
+.english,
+.french,
+.japanese,
+.german {
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+
+    @container horizontal-card (width > 17rem) {
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-size: 1.5rem;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.dutch::before {
+    background-image: url("../assets/flags/flag-nl.svg");
+}
+
+.italian::before {
+    background-image: url("../assets/flags/flag-it.svg");
+}
+
+.english::before {
+    background-image: url("../assets/flags/flag-uk.svg");
+}
+
+.french::before {
+    background-image: url("../assets/flags/flag-fr.svg");
+}
+
+.japanese::before {
+    background-image: url("../assets/flags/flag-jp.svg");
+}
+
+.german::before {
+    background-image: url("../assets/flags/flag-de.svg");
+}

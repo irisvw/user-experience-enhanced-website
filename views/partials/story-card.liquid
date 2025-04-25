@@ -12,8 +12,9 @@
       width="80"
       loading="lazy">
   </picture>
-  <p>
-    <span>{{ story.language.language }}</span>
-    <span class="playtime">123</span>
-  </p>
+
+  <ul class="description">
+    <li class="{{ story.language.language | downcase }}">{{ story.language.language }}</li>
+    <li class="playtime">{{ story.playtime }}</li>
+  </ul>
 </li>
