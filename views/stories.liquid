@@ -80,16 +80,8 @@
 
   <ul class="list-vertical">
     {% for story in stories %}
-      <li>
-        <img src="https://fdnd-agency.directus.app/assets/{{ story.image.id }}" alt="">
-        <h3>{{ story.title }}</h2>
-
-        <div>
-          <span class="lang {{ story.language.language | downcase }}">{{ story.language.language }}</span>
-          <p class="playtime">{{ story.playtime }}</p>
-        </div>
-
-      </li>
+      {% render 'partials/story-card.liquid'
+        , story: story %}
     {% endfor %}
   </ul>
 </main>
