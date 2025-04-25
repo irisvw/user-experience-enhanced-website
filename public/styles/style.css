@@ -26,6 +26,15 @@ button {
     border-radius: var(--border-radius);
 }
 
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
 /* Headings */
 h1 {
     width: max-content;
@@ -75,7 +84,7 @@ ol.progress {
     min-width: 100%;
     list-style: none;
 
-    li:has(a) {
+    li:last-child {
         margin-left: auto;
     }
 
@@ -83,14 +92,25 @@ ol.progress {
         color: white;
         text-decoration: none;
         font-weight: var(--font-weight-bold);
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
-    button {
+    .button-link {
+        display: inline-block;
+        padding: .5em;
+        border-radius: var(--border-radius);
         color: black;
         background-color: white;
         font-size: var(--font-size-m);
         font-weight: var(--font-weight-bold);
         font-family: var(--font-primary);
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
