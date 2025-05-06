@@ -201,6 +201,7 @@ ol.progress {
 
     >li h3 {
         height: 2lh;
+        max-height: 2lh;
         text-wrap: balance;
         align-content: space-evenly;
         overflow: hidden;
@@ -270,17 +271,24 @@ ol.progress {
         width: 100%;
         max-width: 90vw;
         height: 6rem;
+        margin: .5em 0;
         padding: .5rem;
-
+        
         display: grid;
         grid-template-columns: 5rem 1fr;
         grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "image title"
+            "image description";
         column-gap: .5rem;
-        margin: .5em 0;
+
+        container-type: inline-size;
+        container-name: horizontal-card;
 
         h3 {
             font-size: 1rem;
             align-self: flex-end;
+            grid-area: title;
         }
 
         >picture {
@@ -290,8 +298,15 @@ ol.progress {
             width: 5rem;
         }
 
-        p {
-            display: inline-block;
+        .language {
+            grid-area: description;
+            justify-self: end;
+            align-self: center;
+        }
+        .playtime {
+            grid-area: description;
+            justify-self: start;
+            align-self: center;
         }
     }
 }
@@ -351,6 +366,7 @@ ol.progress {
         justify-self: end;
         align-self: center;
     }
+    
     .playtime {
         grid-area: description;
         justify-self: start;
