@@ -346,13 +346,15 @@ ol.progress {
         grid-area: title;
     }
 
-    li .description {
+    .language {
         grid-area: description;
-        list-style: none;
-        width: fit-content;
-        height: fit-content;
-        display: inline-flex;
-        gap: .5rem;
+        justify-self: end;
+        align-self: center;
+    }
+    .playtime {
+        grid-area: description;
+        justify-self: start;
+        align-self: center;
     }
 }
 
@@ -607,10 +609,10 @@ ol.progress {
 .german {
     display: inline-flex;
     align-items: center;
-    gap: .5em;
+    gap: 1ch;
 
     @container horizontal-card (width > 17rem) {
-        &::before {
+        &::after {
             content: "";
             display: inline-block;
             width: 1.5rem;
@@ -621,26 +623,31 @@ ol.progress {
     }
 }
 
-.dutch::before {
+.dutch::after {
     background-image: url("../assets/flags/flag-nl.svg");
 }
 
-.italian::before {
+.italian::after {
     background-image: url("../assets/flags/flag-it.svg");
 }
 
-.english::before {
+.english::after {
     background-image: url("../assets/flags/flag-uk.svg");
 }
 
-.french::before {
+.french::after {
     background-image: url("../assets/flags/flag-fr.svg");
 }
 
-.japanese::before {
+.japanese::after {
     background-image: url("../assets/flags/flag-jp.svg");
 }
 
-.german::before {
+.german::after {
     background-image: url("../assets/flags/flag-de.svg");
+}
+
+/* View Transition */
+@view-transition {
+    navigation: auto;
 }
