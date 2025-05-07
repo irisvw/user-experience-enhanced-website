@@ -16,7 +16,7 @@ body {
 main {
     max-width: 500px;
     margin: 1rem auto;
-    padding-left: 1rem;
+    padding: 0 1rem;
 }
 
 button {
@@ -266,10 +266,8 @@ ol.progress {
     margin-top: 1.5em;
     align-items: center;
 
-
     >li {
         width: 100%;
-        max-width: 90vw;
         height: 6rem;
         margin: .5em 0;
         padding: .5rem;
@@ -550,7 +548,6 @@ ol.progress {
     background-color: #8654F3;
     border-radius: 5px;
     margin: .5em auto;
-    max-width: 90dvw;
 }
 
 .summary-top-level {
