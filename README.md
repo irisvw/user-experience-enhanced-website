@@ -25,6 +25,12 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/enhance
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
+### Loading State
+### Success State
+### Recommended Stories
+### Carousel
+### Responsive Images.
+
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
 
