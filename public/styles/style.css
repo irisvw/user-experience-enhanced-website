@@ -11,6 +11,8 @@ body {
 
     font-family: var(--font-primary);
     color: white;
+
+    min-height: 100dvh;
 }
 
 main {

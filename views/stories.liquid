@@ -10,7 +10,7 @@
     <form
       role="search"
       class="searchbox"
-      action="/search"
+      action="/stories/filter?query="
       method="get">
       <label for="search">
         <input
@@ -33,7 +33,7 @@
       <ul class="options">
         {% for animal in animals %}
           <li>
-            <a href="/filter?animal={{ animal.id }}">{{ animal.animal | capitalize }}</a>
+            <a href="/stories/filter?animal={{ animal.id }}">{{ animal.animal | capitalize }}</a>
           </li>
         {% endfor %}
       </ul>
@@ -44,7 +44,7 @@
       <ul class="options">
         {% for season in seasons %}
           <li>
-            <a href="/filter?season={{ season.id }}">{{ season.season }}</a>
+            <a href="/stories/filter?season={{ season.id }}">{{ season.season }}</a>
           </li>
         {% endfor %}
       </ul>
@@ -55,7 +55,7 @@
       <ul class="options">
         {% for language in languages %}
           <li>
-            <a href="/filter?language={{ language.id }}">{{ language.language }}</a>
+            <a href="/stories/filter?language={{ language.id }}">{{ language.language }}</a>
           </li>
         {% endfor %}
       </ul>
@@ -65,13 +65,13 @@
       <summary>Sorting</summary>
       <ul class="options">
         <li>
-          <a href="/">Default</a>
+          <a href="/stories">Default</a>
         </li>
         <li>
-          <a href="/sort=alphabetical">Alphabetical</a>
+          <a href="/stories/filter?sort=title">Alphabetical</a>
         </li>
         <li>
-          <a href="/sort=playtime">Playtime</a>
+          <a href="/stories/filter?sort=playtime">Playtime</a>
         </li>
       </ul>
     </details>
