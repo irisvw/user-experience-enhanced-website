@@ -84,6 +84,9 @@
       <p>There are currently no suggested playlists. Check back some other time!</p>
     {% endfor %}
   </ul>
+
+  <dialog class="likeDialog" closedby="any">Added to your liked playlists.</dialog>
+  <dialog class="unlikeDialog" closedby="any">Removed from your liked playlists.</dialog>
 </main>
 
 {% render 'partials/foot.liquid' %}
@@ -117,6 +120,14 @@
   
       // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
       form.outerHTML = newState.outerHTML;
+  
+      let type = form.getAttribute('data-type');
+      if (type == "like") {
+        document.querySelector('dialog.likeDialog').show();
+      } else {
+        document.querySelector('dialog.unlikeDialog').show();
+      }
+      
     });
   }
 </script>

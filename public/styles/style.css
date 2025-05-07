@@ -37,6 +37,18 @@ a {
     text-decoration-thickness: 1px;
 }
 
+dialog {
+    transition: .5s all;
+    position: fixed;
+    bottom: 1%;
+    right: auto;
+    left: auto;
+
+    border: 1px solid black;
+    padding: .5rem;
+    border-radius: var(--border-radius);
+}
+
 /* Headings */
 h1 {
     width: max-content;
@@ -273,7 +285,7 @@ ol.progress {
         height: 6rem;
         margin: .5em 0;
         padding: .5rem;
-        
+
         display: grid;
         grid-template-columns: 5rem 1fr;
         grid-template-rows: 1fr 1fr;
@@ -303,6 +315,7 @@ ol.progress {
             justify-self: end;
             align-self: center;
         }
+
         .playtime {
             grid-area: description;
             justify-self: start;
@@ -366,7 +379,7 @@ ol.progress {
         justify-self: end;
         align-self: center;
     }
-    
+
     .playtime {
         grid-area: description;
         justify-self: start;
@@ -626,13 +639,13 @@ ol.progress {
     align-items: center;
     gap: 1ch;
 
-        &::after {
-            content: "";
-            display: inline-block;
-            width: 1.5rem;
-            height: 1.5rem;
-            background-size: 1.5rem;
-            background-repeat: no-repeat;
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-size: 1.5rem;
+        background-repeat: no-repeat;
     }
 
     @container horizontal-card (width < 17rem) {
