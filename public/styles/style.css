@@ -38,11 +38,12 @@ a {
 }
 
 dialog {
+    width: 20rem;
     transition: .5s all;
     position: fixed;
     bottom: 1%;
-    right: auto;
-    left: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     border: 1px solid black;
     padding: .5rem;
