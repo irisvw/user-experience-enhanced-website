@@ -39,7 +39,7 @@ a {
 
 dialog {
     width: 20rem;
-    transition: .5s all;
+    transition: 1s all allow-discrete;
     position: fixed;
     bottom: 1%;
     left: 50%;
@@ -48,6 +48,32 @@ dialog {
     border: 1px solid black;
     padding: .5rem;
     border-radius: var(--border-radius);
+
+    animation: close 1s forwards;
+
+    &[open] {
+        animation: open .2s forwards;
+    }
+}
+
+@keyframes open {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes close {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 /* Headings */
