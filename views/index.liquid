@@ -63,27 +63,28 @@
     </ul>
   </div>
 
-  <h2>Liked playlists</h2>
-  <ul class="list-horizontal">
-    {% for playlist in likedPlaylists %}
-      {% render 'partials/playlist-card.liquid'
-        , playlist: playlist
-        , action: 'unlike' %}
-    {% else %}
-      <p>Tap the ❤️ at any playlists you love!</p>
-    {% endfor %}
-  </ul>
-
-  <h2>Suggested playlists</h2>
-  <ul class="list-horizontal">
-    {% for playlist in suggestedPlaylists %}
-      {% render 'partials/playlist-card.liquid'
-        , playlist: playlist
-        , action: 'like' %}
-    {% else %}
-      <p>There are currently no suggested playlists. Check back some other time!</p>
-    {% endfor %}
-  </ul>
+  <section id="playlists">
+    <h2>Liked playlists</h2>
+    <ul class="list-horizontal">
+      {% for playlist in likedPlaylists %}
+        {% render 'partials/playlist-card.liquid'
+          , playlist: playlist
+          , action: 'unlike' %}
+      {% else %}
+        <p>Tap the ❤️ at any playlists you love!</p>
+      {% endfor %}
+    </ul>
+    <h2>Suggested playlists</h2>
+    <ul class="list-horizontal">
+      {% for playlist in suggestedPlaylists %}
+        {% render 'partials/playlist-card.liquid'
+          , playlist: playlist
+          , action: 'like' %}
+      {% else %}
+        <p>There are currently no suggested playlists. Check back some other time!</p>
+      {% endfor %}
+    </ul>
+  </section>
 
   <dialog class="likeDialog" closedby="any">Added to your liked playlists.</dialog>
   <dialog class="unlikeDialog" closedby="any">Removed from your liked playlists.</dialog>
@@ -115,11 +116,14 @@
   
       const parser = new DOMParser();
       const responseDOM = parser.parseFromString(responseText, 'text/html');
-  
-      const newState = responseDOM.querySelector('[data-enhanced="' + form.getAttribute('data-enhanced') + '"]');
+      const newState = responseDOM.querySelector('#playlists');
   
       // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
-      form.outerHTML = newState.outerHTML;
+      if (document.startViewTransition) {
+        document.startViewTransition(function() { document.querySelector("#playlists").innerHTML = newState.innerHTML; }) 
+      } else {
+        document.querySelector("#playlists").innerHTML = newState.innerHTML;
+      }
   
       let type = form.getAttribute('data-type');
       if (type == "like") {
