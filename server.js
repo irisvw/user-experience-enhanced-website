@@ -86,15 +86,6 @@ app.get('/stories/filter', async function (req, res) {
     queryURL = `?sort=${req.query.sort}`
   }
 
-  // let season = req.query.season;
-  // let language = req.query.language;
-  // let sort = req.query.sort;
-  // let animal = req.query.animal;
-  // let query = req.query.query;
-  
-  // if (req.query.season) { filterURL += `{"season":{"_eq":"${season}"}}` };
-
-  // stories = await fetch(`${baseURL}/tm_story/?filter={"_and":[{"season":{"_eq":"${season}"}},{"animal":{"_eq":"${animal}"}},{"language":{"_eq":"${language}}"}},{"title":{"_icontains":"${query}"}}]}&sort=${sort}`)
   let stories = await fetch(`${baseURL}story/${queryURL}`);
   let storiesJSON = await stories.json();
 
