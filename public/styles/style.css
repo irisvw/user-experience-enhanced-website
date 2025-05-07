@@ -101,7 +101,7 @@ ol.progress {
     }
 
     .button-link {
-        display: inline-block;
+        display: inline-flex;
         padding: .5em;
         border-radius: var(--border-radius);
         color: black;
@@ -626,7 +626,6 @@ ol.progress {
     align-items: center;
     gap: 1ch;
 
-    @container horizontal-card (width > 17rem) {
         &::after {
             content: "";
             display: inline-block;
@@ -634,6 +633,11 @@ ol.progress {
             height: 1.5rem;
             background-size: 1.5rem;
             background-repeat: no-repeat;
+    }
+
+    @container horizontal-card (width < 17rem) {
+        &::after {
+            display: none;
         }
     }
 }
