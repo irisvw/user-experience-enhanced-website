@@ -86,7 +86,7 @@ app.get('/stories/filter', async function (req, res) {
     queryURL = `?sort=${req.query.sort}`
   }
 
-  let stories = await fetch(`${baseURL}story/${queryURL}`);
+  let stories = await fetch(`${baseURL}story/${queryURL}&fields=*.*`);
   let storiesJSON = await stories.json();
 
   res.render('stories.liquid', {
