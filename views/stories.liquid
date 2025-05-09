@@ -82,6 +82,10 @@
     {% for story in stories %}
       {% render 'partials/story-card.liquid'
         , story: story %}
+    {% else %}
+      <p>No stories found.
+        <a href="/stories">Reset filters?</a>
+      </p>
     {% endfor %}
   </ul>
 </main>
