@@ -18,6 +18,11 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/enhance
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
 <!-- Voeg een link toe naar je live site 🌐-->
+Ik heb verder gewerkt aan de overzichtspagina van de lessen van TuMi Mundo. Deze pagina bevat een overzicht van alle stories en playlists die je kunt beluisteren. Je kunt je eigen playlists bekijken, direct navigeren naar een overzicht van alle stories, of je gelikede playlists zien. Ook is er een sectie van gesuggereerde playlists.
+
+<img src="https://github.com/user-attachments/assets/4969eeb5-1c18-4c27-b05f-9482aedc768d" height="500">
+<img src="https://github.com/user-attachments/assets/b32b270d-ea5b-458b-9bbd-f67401fef95b" height="500">
+<img src="https://github.com/user-attachments/assets/cf16b0bf-b929-4b8a-8905-ef7f6d640f24" height="500">
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
@@ -25,14 +30,36 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/enhance
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
+https://github.com/user-attachments/assets/2800b513-b5a3-4c48-9e07-cb1727028da0
+
+
 ### Loading State
+Op het moment dat de gebruiker een playlist liked of unliked, speelt er een animatie. Zo weet de gebruiker dat er iets gaande is. De animatie wordt gestart in een client-side script.
+https://github.com/irisvw/user-experience-enhanced-website/blob/5836a9d8a6757cb28c09f1ed88d44ef3fbbde8f7/views/index.liquid#L108
+
 ### Success State
-### Recommended Stories
+Een playlist die is geliked heeft een rood ingevuld hartje, en verplaatst direct naar de juiste categorie. Ook verschijnt een pop-up met extra bevestiging, om de feedback aan gebruikers zo duidelijk mogelijk te maken. De pop-up verdwijnt vanzelf na twee seconden.
+https://github.com/irisvw/user-experience-enhanced-website/blob/5836a9d8a6757cb28c09f1ed88d44ef3fbbde8f7/views/index.liquid#L129-L130
+
 ### Carousel
-### Responsive Images.
+Ik heb scroll markers en scroll buttons ingezet om het navigeren door de grid-stijl lijsten gemakkelijker te maken. In oudere browsers is het nog steeds mogelijk hier op reguliere manier doorheen te scrollen.
+https://github.com/irisvw/user-experience-enhanced-website/blob/5836a9d8a6757cb28c09f1ed88d44ef3fbbde8f7/public/styles/style.css#L442-L445
+
+### Responsive Images
+Ik heb het `<picture>` element gebruikt om afbeeldingen in meerdere bestandsformaten en resoluties aan te bieden. Op deze manier worden afbeeldingen in modernere formaten geladen (als die beschikbaar zijn), en worden er geen onnodig grote afbeeldingen geladen als dat niet nodig is.
+https://github.com/irisvw/user-experience-enhanced-website/blob/5836a9d8a6757cb28c09f1ed88d44ef3fbbde8f7/views/partials/story-card.liquid#L3-L14
+
+### View Transitions
+Ik heb view transitions ingezet zodat het verplaatsen van een playlist nadat die is geliked op een gave manier geanimeerd wordt.
+https://github.com/irisvw/user-experience-enhanced-website/blob/5836a9d8a6757cb28c09f1ed88d44ef3fbbde8f7/views/index.liquid#L122-L123
 
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
+1. Navigeer naar nodejs.org en installeer de NodeJS ontwikkelomgeving. Kies voor NodeJS 22.15.0 with long-term support, download de benodigde bestanden en doorloop het installatieproces.
+2. Fork daarna deze repository en clone deze op jouw computer.
+3. Open deze repository in je editor, bijvoorbeeld VS code.
+4. Voer in de terminal het commando `npm install` uit
+5. Start de site op door in de terminal het commando `npm start` uit te voeren.
 
 ## Bronnen
 
