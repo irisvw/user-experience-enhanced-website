@@ -127,9 +127,13 @@
   
       let type = form.getAttribute('data-type');
       if (type == "like") {
-        document.querySelector('dialog.likeDialog').show();
+        const likeDialog = document.querySelector('dialog.likeDialog');
+        likeDialog.show();
+        setTimeout(() => likeDialog.close(), 2000);
       } else {
-        document.querySelector('dialog.unlikeDialog').show();
+        const unlikeDialog = document.querySelector('dialog.unlikeDialog');
+        unlikeDialog.show();
+        setTimeout(() => unlikeDialog.close(), 2000);
       }
       
     });
